@@ -1,0 +1,15 @@
+<div class="dropdown">
+    <div class="header" (click)="bChildrenShown = !bChildrenShown">
+        <span *ngIf="node.name !== 'population'" class="arrow down"></span> {{node.name}}  <span class="grayTxt">({{node.children.length}})</span>
+    </div>
+    <ng-container *ngIf="bChildrenShown">
+        <ng-container *ngFor="let childNode of node.children">
+            <app-node [node]="childNode"></app-node>
+
+            <div class="population" *ngIf="childNode.name === 'population'">
+               -  {{childNode.child}}
+            </div>
+
+        </ng-container>
+    </ng-container>
+</div>
